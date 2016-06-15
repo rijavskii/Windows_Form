@@ -23,7 +23,7 @@ namespace WF2
             if (ab.ShowDialog() == DialogResult.OK)
             {
                 lvBikes.Items.Add(ab.GetCreatedBike().ToString());
-                lvBikes.Items.Add(ab.GetCreatedBike().Color );
+                lvBikes.Items.Add(ab.GetCreatedBike(). );
                 
             }
         }

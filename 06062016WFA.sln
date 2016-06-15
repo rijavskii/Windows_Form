@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06062016WFA", "06062016WFA\06062016WFA.csproj", "{6D193EE0-A2B6-407D-A460-DDED1253F5A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WF2", "WF2\WF2.csproj", "{2F2F0C3E-AC8F-4AD1-B85C-2735EAC7BE4B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikesHometask", "..\..\BikesHometask\BikesHometask\BikesHometask.csproj", "{2B9EEBB0-A6BA-4A47-B627-33A5A6790D53}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6D193EE0-A2B6-407D-A460-DDED1253F5A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D193EE0-A2B6-407D-A460-DDED1253F5A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D193EE0-A2B6-407D-A460-DDED1253F5A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D193EE0-A2B6-407D-A460-DDED1253F5A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F2F0C3E-AC8F-4AD1-B85C-2735EAC7BE4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F2F0C3E-AC8F-4AD1-B85C-2735EAC7BE4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F2F0C3E-AC8F-4AD1-B85C-2735EAC7BE4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F2F0C3E-AC8F-4AD1-B85C-2735EAC7BE4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B9EEBB0-A6BA-4A47-B627-33A5A6790D53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B9EEBB0-A6BA-4A47-B627-33A5A6790D53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B9EEBB0-A6BA-4A47-B627-33A5A6790D53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B9EEBB0-A6BA-4A47-B627-33A5A6790D53}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

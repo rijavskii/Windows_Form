@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Windows.Forms;
+using CrossBike;
 
 namespace WF2
 {
     public partial class UcCross : UserControl
     {
-        public UcCross()
+        private readonly int Id;
+
+        public UcCross(int bikeId)
         {
             InitializeComponent();
 
@@ -16,17 +19,31 @@ namespace WF2
             cbColor.Items.Add(BikeColor.Red);
             cbColor.Items.Add(BikeColor.Yellow);
             cbColor.SelectedIndex = 2;
+
+            Id = bikeId;
+        }
+
+        public UcCross(Cross bCross)
+        {
+            InitializeComponent();
+
+            tbName.Text = bCross.Name;
+            tbSize.Text = bCross.Size.ToString();
+            tbWheel.Text = bCross.Wheel.ToString();
+            tbSpeedCount.Text = bCross.SpeedCount.ToString();
+            cbColor.SelectedItem = bCross.Color;
+            this.Enabled = false;
         }
 
         public Cross GetCross()
         {
-          if(Validation())
+          if(ValidateControls())
             {
-                return new Cross
+                return new Cross(Id)
                 {
-                    Color = cbColor.SelectedItem.ToString(),
-                    Material = tbMaterial.Text,
-                    Wheel = Convert.ToSingle(tbWheel.Text),
+                    Name = tbName.Text,
+                    Size = tbName.Text.GetInt(),
+                    Wheel = tbSize.Text.GetInt(),
                     SpeedCount = Convert.ToInt32(tbSpeedCount.Text)
                 };
             }
@@ -37,11 +54,11 @@ namespace WF2
 
         }
 
-        public bool Validation()
+        public bool ValidateControls()
         {
-            if ((tbMaterial.Text.Length > 0 ? true : false) &
-                (tbSpeedCount.Text.Length > 0 ? true : false) &
-                (tbWheel.Text.Length > 0 ? true : false))
+            if ((tbName.Text.Trim() !=  String.Empty ? true : false) &
+                (tbSpeedCount.Text.Trim() != String.Empty ? true : false) &
+                (tbSize.Text.Trim() != String.Empty ? true : false))
             {
                 return true;
             }
@@ -51,5 +68,9 @@ namespace WF2
             }
         }
 
+        private void UcCross_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -1,11 +1,16 @@
 ﻿using System;
-using BikesHometask;
+using WF2.BikeClasess;
 
-namespace WF2
+namespace HardTeilBike
 {
     public class HardTeil : Bike
     {
         public string ForkType { get; set; }
-        public Int32 Size { get; set; }
+        public string Material{ get; set; }
+
+        public HardTeil(int id) : base(id)
+        {
+
+        }
     }
 }

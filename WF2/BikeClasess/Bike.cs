@@ -1,16 +1,18 @@
-﻿using System;
+﻿using System.Runtime.InteropServices;
 
-namespace BikesHometask
+namespace WF2.BikeClasess
 {
     public class Bike
     {
+        public readonly int Id ;
+        public string Name { get; set; }
+        public int Size { get; set; }
         public string Color { get; set; }
-        public string Material { get; set; }
 
-        public override string ToString()
+        public Bike(int id)
         {
-            return "Color - " + Color + ';' + Environment.NewLine + 
-                   "Material - " + Material + Environment.NewLine;
+            Id = id;
         }
+        
     }
 }

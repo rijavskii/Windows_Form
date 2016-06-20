@@ -1,20 +1,15 @@
-﻿using System;
-using BikesHometask;
+﻿using WF2.BikeClasess;
 
-namespace WF2
+namespace CrossBike
 {
     public class Cross : Bike
     {
         public float Wheel { get; set; }
         public int SpeedCount { get; set; }
+        
 
-        public override string ToString()
+        public Cross(int id) : base(id)
         {
-            return "Cross : " + Environment.NewLine +
-                    "Color - " + Color + ';' + Environment.NewLine +
-                   "Material - " + Material + ';' + Environment.NewLine +
-                   "Wheel - " + Wheel + ';' + Environment.NewLine +
-                   "SpeedCount - " + SpeedCount + ";" + Environment.NewLine;
         }
     }
 

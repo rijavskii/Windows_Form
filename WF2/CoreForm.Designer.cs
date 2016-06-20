@@ -113,7 +113,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -138,6 +138,7 @@
             this.colName,
             this.colSize});
             this.lvBikes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvBikes.FullRowSelect = true;
             this.lvBikes.GridLines = true;
             this.lvBikes.Location = new System.Drawing.Point(0, 0);
             this.lvBikes.Name = "lvBikes";
@@ -145,6 +146,7 @@
             this.lvBikes.TabIndex = 0;
             this.lvBikes.UseCompatibleStateImageBehavior = false;
             this.lvBikes.View = System.Windows.Forms.View.Details;
+            this.lvBikes.SelectedIndexChanged += new System.EventHandler(this.lvBikes_SelectedIndexChanged);
             // 
             // colName
             // 

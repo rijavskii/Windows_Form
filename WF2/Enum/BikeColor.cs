@@ -2,11 +2,11 @@
 {
     public enum BikeColor
     {
-        Red,
-        Green,
         Blue,
-        Orange,
-        Yellow,
         Black,
+        Green,
+        Orange,
+        Red,
+        Yellow,
     }
 }

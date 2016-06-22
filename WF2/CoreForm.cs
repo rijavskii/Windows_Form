@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Windows.Forms;
 using CrossBike;
 using HardTeilBike;
@@ -12,7 +13,8 @@ namespace WF2
     {
         private int _bikeId = 1;
         private List<Bike> _bikes = new List<Bike>();
-     
+        ListViewItem items;
+        private int selected_id = 0;
         public CoreForm()
         {
             InitializeComponent();
@@ -34,11 +36,11 @@ namespace WF2
                 var bike = ab.GetCreatedBike();
                 _bikes.Add(bike);
 
-                var item = new ListViewItem(bike.Name);
-                item.SubItems.Add(bike.Size.ToString());
-                item.SubItems.Add(_bikeId.ToString());
+                items = new ListViewItem(bike.Name);
+                items.SubItems.Add(bike.Size.ToString());
+                items.SubItems.Add(_bikeId.ToString());
 
-                lvBikes.Items.Add(item);
+                lvBikes.Items.Add(items);
 
                 _bikeId++;
 
@@ -48,7 +50,28 @@ namespace WF2
 
         private void removeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+           var result =  MessageBox.Show("Are you shure want to delete this bike?", "Information", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                for(int i = items.ListView.SelectedItems.Count-1; i >= 0; i--)
+                {
+                    ListViewItem itm = lvBikes.SelectedItems[i];
+                    lvBikes.Items[itm.Index].Remove();
+                        //if (_bikes.Count != 0)
+                        //{
+                        //    //var list = items.ListView.SelectedItems[0];
+                        //    this.lvBikes.SelectedItems.Clear();
+                        //    //for (int i = 0; i <= _bikes.Count; i++)
+                        //    //{
+                        //    //    if (_bikes[i].Id == selected_id)
+                        //    //    {
+                        //    //        _bikes.RemoveAt(i);
+                        //    //    }
+                        //    //}
+                        //    //list.Remove();
+                    scContent.Panel2.Controls.Clear();
+                }
+            }
         }
 
         private void openSavedToolStripMenuItem_Click(object sender, EventArgs e)
@@ -69,11 +92,11 @@ namespace WF2
             {
                 var listViewItem = listView.SelectedItems[0];
 
-                int id = listViewItem.SubItems[2].Text.GetInt();
+                selected_id = listViewItem.SubItems[2].Text.GetInt();
 
                 foreach (var bike in _bikes)
                 {
-                    if (bike.Id == id)
+                    if (bike.Id == selected_id)
 
                     {
                        var type = bike.GetType();
@@ -101,6 +124,16 @@ namespace WF2
             }
         }
 
-       
+        private void saveToFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Stream st = new FileStream(@"E:\study\ITA\base.txt", FileMode.OpenOrCreate);
+            StreamWriter sw = new StreamWriter(st);
+            foreach (var bike in _bikes)
+            {
+                sw.Write(bike.ToString()+Environment.NewLine);
+            }
+            sw.Close();
+            st.Close();
+        }
     }
 }

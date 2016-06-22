@@ -1,4 +1,5 @@
-﻿using WF2.BikeClasess;
+﻿using WF2;
+using WF2.BikeClasess;
 
 namespace MountainBike
 {
@@ -9,6 +10,11 @@ namespace MountainBike
 
         public Mountain(int id) : base(id)
         {
+        }
+
+        public override string ToString()
+        {
+            return string.Format("{0}, {1}, {2}, {3}", Id, Name, Size, BikeType.Mountain);
         }
     }
 }

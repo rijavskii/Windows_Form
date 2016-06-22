@@ -41,6 +41,8 @@
             this.lvBikes = new System.Windows.Forms.ListView();
             this.colName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colSize = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.saveToFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToDbToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scContent)).BeginInit();
             this.scContent.Panel1.SuspendLayout();
@@ -65,7 +67,9 @@
             this.addToolStripMenuItem,
             this.removeToolStripMenuItem,
             this.tsSeparator,
-            this.openSavedToolStripMenuItem});
+            this.openSavedToolStripMenuItem,
+            this.saveToFileToolStripMenuItem,
+            this.saveToDbToolStripMenuItem});
             this.bikeToolStripMenuItem.Name = "bikeToolStripMenuItem";
             this.bikeToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
             this.bikeToolStripMenuItem.Text = "Bike";
@@ -157,6 +161,19 @@
             // 
             this.colSize.Text = "Size";
             // 
+            // saveToFileToolStripMenuItem
+            // 
+            this.saveToFileToolStripMenuItem.Name = "saveToFileToolStripMenuItem";
+            this.saveToFileToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToFileToolStripMenuItem.Text = "Save to file";
+            this.saveToFileToolStripMenuItem.Click += new System.EventHandler(this.saveToFileToolStripMenuItem_Click);
+            // 
+            // saveToDbToolStripMenuItem
+            // 
+            this.saveToDbToolStripMenuItem.Name = "saveToDbToolStripMenuItem";
+            this.saveToDbToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToDbToolStripMenuItem.Text = "Save to Db";
+            // 
             // CoreForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -195,6 +212,8 @@
         private System.Windows.Forms.ColumnHeader colName;
         private System.Windows.Forms.ColumnHeader colSize;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveToFileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveToDbToolStripMenuItem;
     }
 }
 

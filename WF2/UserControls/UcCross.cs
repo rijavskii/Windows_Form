@@ -56,9 +56,9 @@ namespace WF2
 
         public bool ValidateControls()
         {
-            if ((tbName.Text.Trim() !=  String.Empty ? true : false) &
-                (tbSpeedCount.Text.Trim() != String.Empty ? true : false) &
-                (tbSize.Text.Trim() != String.Empty ? true : false))
+            if ((tbName.Text.Trim() !=  String.Empty) &
+                (tbSpeedCount.Text.Trim() != String.Empty) &
+                (tbSize.Text.Trim() != String.Empty))
             {
                 return true;
             }

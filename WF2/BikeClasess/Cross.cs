@@ -1,4 +1,5 @@
-﻿using WF2.BikeClasess;
+﻿using WF2;
+using WF2.BikeClasess;
 
 namespace CrossBike
 {
@@ -10,6 +11,11 @@ namespace CrossBike
 
         public Cross(int id) : base(id)
         {
+        }
+
+        public override string ToString()
+        {
+            return string.Format("{0}, {1}, {2}, {3}", Id, Name, Size, BikeType.Cross);
         }
     }
 

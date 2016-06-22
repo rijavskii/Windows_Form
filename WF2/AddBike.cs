@@ -67,7 +67,7 @@ namespace WF2
                     return ucHardTeil.GetHardTeil();
 
                 case BikeType.Mountain:
-                    return ucCross.GetCross();
+                    return ucMountain.GetMountain();
                 default:
                     return null;
 

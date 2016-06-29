@@ -19,5 +19,15 @@
             }
             return 0;
         }
+
+        public static float GetFloat(this string source)
+        {
+            float i = 0;
+            if (float.TryParse(source, out i))
+            {
+                return i;
+            }
+            return 0;
+        }
     }
 }

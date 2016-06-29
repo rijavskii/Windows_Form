@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using CrossBike;
 
 namespace WF2
 {
@@ -11,13 +10,15 @@ namespace WF2
         public UcCross(int bikeId)
         {
             InitializeComponent();
-
+            
+            
             cbColor.Items.Add(BikeColor.Blue);
             cbColor.Items.Add(BikeColor.Black);
             cbColor.Items.Add(BikeColor.Green);
             cbColor.Items.Add(BikeColor.Orange);
             cbColor.Items.Add(BikeColor.Red);
             cbColor.Items.Add(BikeColor.Yellow);
+
             cbColor.SelectedIndex = 2;
 
             Id = bikeId;
@@ -27,11 +28,18 @@ namespace WF2
         {
             InitializeComponent();
 
+            cbColor.Items.Add(BikeColor.Blue);
+            cbColor.Items.Add(BikeColor.Black);
+            cbColor.Items.Add(BikeColor.Green);
+            cbColor.Items.Add(BikeColor.Orange);
+            cbColor.Items.Add(BikeColor.Red);
+            cbColor.Items.Add(BikeColor.Yellow);
+
             tbName.Text = bCross.Name;
             tbSize.Text = bCross.Size.ToString();
             tbWheel.Text = bCross.Wheel.ToString();
             tbSpeedCount.Text = bCross.SpeedCount.ToString();
-            cbColor.SelectedItem = bCross.Color;
+            cbColor.SelectedIndex = bCross.Color;
             this.Enabled = false;
         }
 
@@ -42,9 +50,10 @@ namespace WF2
                 return new Cross(Id)
                 {
                     Name = tbName.Text,
-                    Size = tbName.Text.GetInt(),
-                    Wheel = tbSize.Text.GetInt(),
-                    SpeedCount = Convert.ToInt32(tbSpeedCount.Text)
+                    Size = tbSize.Text.GetInt(),
+                    Wheel = tbWheel.Text.GetFloat(),
+                    SpeedCount = tbSpeedCount.Text.GetInt(),
+                    Color = cbColor.SelectedIndex
                 };
             }
           else
@@ -58,7 +67,8 @@ namespace WF2
         {
             if ((tbName.Text.Trim() !=  String.Empty) &
                 (tbSpeedCount.Text.Trim() != String.Empty) &
-                (tbSize.Text.Trim() != String.Empty))
+                (tbSize.Text.Trim() != String.Empty) &
+                (tbWheel.Text.Trim() != String.Empty))
             {
                 return true;
             }

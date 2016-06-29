@@ -1,13 +1,22 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Runtime.Serialization;
 
-namespace WF2.BikeClasess
+namespace WF2
 {
+    [DataContract]
     public class Bike
     {
-        public readonly int Id ;
+        [DataMember]
+        public int Id ;
+
+        [DataMember]
         public string Name { get; set; }
+
+        [DataMember]
         public int Size { get; set; }
-        public string Color { get; set; }
+
+        [DataMember]
+        public int Color { get; set; }
+
 
         public Bike(int id)
         {
@@ -16,7 +25,12 @@ namespace WF2.BikeClasess
 
         public override string ToString()
         {
-            return string.Format("{0}, {1}, {2}, {3}", Id, Name, Size, this.GetType().Name);
+            return string.Format("{0}, {1}, {2}, {3}, {4}", Id, Name, Size, Color, this.GetType().Name);
+        }
+
+        protected Bike()
+        {
+            
         }
     }
 }

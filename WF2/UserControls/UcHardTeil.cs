@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using HardTeilBike;
 
 namespace WF2
 {
@@ -12,24 +11,32 @@ namespace WF2
         {
             InitializeComponent();
 
+            SetColor();
+
+            cbColor.SelectedIndex = 2;
+
+            Id = bikeId;
+        }
+
+        private void SetColor()
+        {
             cbColor.Items.Add(BikeColor.Blue);
             cbColor.Items.Add(BikeColor.Black);
             cbColor.Items.Add(BikeColor.Green);
             cbColor.Items.Add(BikeColor.Orange);
             cbColor.Items.Add(BikeColor.Red);
             cbColor.Items.Add(BikeColor.Yellow);
-            cbColor.SelectedIndex = 2;
-
-            Id = bikeId;
         }
 
         public UcHardTeil(HardTeil hardTeil)
         {
             InitializeComponent();
 
+            SetColor();
+
             tbName.Text = hardTeil.Name;
             tbMaterial.Text = hardTeil.Material;
-            cbColor.SelectedItem = hardTeil.Color;
+            cbColor.SelectedIndex = hardTeil.Color;
             tbSize.Text = hardTeil.Size.ToString();
             tbForkType.Text = hardTeil.ForkType;
             this.Enabled = false;
@@ -42,7 +49,7 @@ namespace WF2
                 return new HardTeil(Id)
                 {
                     Name = tbName.Text,
-                    Color = cbColor.SelectedText,
+                    Color = cbColor.SelectedIndex,
                     Material = tbMaterial.Text,
                     Size = Convert.ToInt32(tbSize.Text),
                     ForkType = tbForkType.Text

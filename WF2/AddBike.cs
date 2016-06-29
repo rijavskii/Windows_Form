@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using WF2.BikeClasess;
-
-
 
 namespace WF2
 {

@@ -1,13 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using MountainBike;
 
 namespace WF2
 {
@@ -18,26 +10,31 @@ namespace WF2
         {
             InitializeComponent();
 
+            SetColor();
+
+            cbColor.SelectedIndex = 2;
+            Id = bikeId;
+        }
+
+        private void SetColor()
+        {
             cbColor.Items.Add(BikeColor.Blue);
             cbColor.Items.Add(BikeColor.Black);
             cbColor.Items.Add(BikeColor.Green);
             cbColor.Items.Add(BikeColor.Orange);
             cbColor.Items.Add(BikeColor.Red);
             cbColor.Items.Add(BikeColor.Yellow);
-
-            cbColor.SelectedIndex = 2;
-            Id = bikeId;
         }
 
         public UcMountain(Mountain bike)
         {
             InitializeComponent();
-
+            SetColor();
             tbName.Text = bike.Name;
             tbSize.Text = bike.Size.ToString();
             tbBreakType.Text = bike.BreakType;
             tbWheelSize.Text = bike.WheelSize.ToString();
-            cbColor.SelectedItem = bike.Color;
+            cbColor.SelectedIndex = bike.Color;
 
             this.Enabled = false;
         }
@@ -49,7 +46,8 @@ namespace WF2
                 return new Mountain(Id)
                 {
                     Name = tbName.Text,
-                    Size = tbName.Text.GetInt(),
+                    Size = tbSize.Text.GetInt(),
+                    Color = cbColor.SelectedIndex,
                     WheelSize = tbWheelSize.Text.GetInt(),
                     BreakType = tbBreakType.Text
                 };
@@ -65,7 +63,7 @@ namespace WF2
             if ((tbName.Text.Trim() != String.Empty) &
                 (tbSize.Text.Trim() != String.Empty) &
                 (tbBreakType.Text.Trim() != String.Empty)&
-                (tbWheelSize.Text.Trim().GetInt()<10))
+                (tbWheelSize.Text.Trim().GetInt()>5))
             {
                 return true;
             }

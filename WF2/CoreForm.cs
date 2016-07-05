@@ -246,12 +246,14 @@ namespace WF2
 
         public void DeSerializeFromFile(string filename)
         {
-            if(File.Exists(filename))
-            using (var stream = new FileStream((@"E:\study\ITA\ser.txt"), FileMode.OpenOrCreate))
+            if (File.Exists(filename))
             {
-                var serializer = new XmlSerializer(typeof(List<Bike>),
-                new[] { typeof(Cross), typeof(HardTeil), typeof(Mountain) });
-                _bikes =(List<Bike>) serializer.Deserialize(stream);
+                using (var stream = new FileStream((@"E:\study\ITA\ser.txt"), FileMode.OpenOrCreate))
+                {
+                    var serializer = new XmlSerializer(typeof (List<Bike>),
+                        new[] {typeof (Cross), typeof (HardTeil), typeof (Mountain)});
+                    _bikes = (List<Bike>) serializer.Deserialize(stream);
+                }
             }
         }
     }

@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WF2", "WF2\WF2.csproj", "{2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikesHometask", "..\..\BikesHometask\BikesHometask\BikesHometask.csproj", "{2B9EEBB0-A6BA-4A47-B627-33A5A6790D53}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ado.Net", "Ado.Net\Ado.Net.csproj", "{549494E2-3BFA-4AE1-B49C-A1B908A003A7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{2B9EEBB0-A6BA-4A47-B627-33A5A6790D53}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B9EEBB0-A6BA-4A47-B627-33A5A6790D53}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B9EEBB0-A6BA-4A47-B627-33A5A6790D53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{549494E2-3BFA-4AE1-B49C-A1B908A003A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{549494E2-3BFA-4AE1-B49C-A1B908A003A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{549494E2-3BFA-4AE1-B49C-A1B908A003A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{549494E2-3BFA-4AE1-B49C-A1B908A003A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

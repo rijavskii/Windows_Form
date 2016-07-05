@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<ArrayOfBike xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Bike xsi:type="Cross">
+    <Id>1</Id>
+    <Name>1</Name>
+    <Size>1</Size>
+    <Color>2</Color>
+    <Wheel>1</Wheel>
+    <SpeedCount>1</SpeedCount>
+  </Bike>
+  <Bike xsi:type="Cross">
+    <Id>2</Id>
+    <Name>2</Name>
+    <Size>2</Size>
+    <Color>2</Color>
+    <Wheel>2</Wheel>
+    <SpeedCount>2</SpeedCount>
+  </Bike>
+  <Bike xsi:type="HardTeil">
+    <Id>3</Id>
+    <Name>3</Name>
+    <Size>3</Size>
+    <Color>2</Color>
+    <ForkType>3</ForkType>
+    <Material>3</Material>
+  </Bike>
+  <Bike xsi:type="Mountain">
+    <Id>4</Id>
+    <Name>5</Name>
+    <Size>5</Size>
+    <Color>2</Color>
+    <BreakType>6</BreakType>
+    <WheelSize>6</WheelSize>
+  </Bike>
+</ArrayOfBike>

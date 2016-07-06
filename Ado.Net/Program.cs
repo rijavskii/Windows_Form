@@ -2,10 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
-using System.Linq;
 using System.Data.SqlClient;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Ado.Net
 {
@@ -15,9 +12,10 @@ namespace Ado.Net
         {
             ReadFromBase();
         }
-
+        
         private static void ReadFromBase()
         {
+            
             var conString = ConfigurationManager.AppSettings["Connection String"];
             using (var connection = new SqlConnection(conString))
             {
@@ -43,20 +41,23 @@ namespace Ado.Net
                         var item = new Employee()
                         {
                             Id = int.Parse(reader[0].ToString()),
+
                             Name = reader[1].ToString(),
+
                             Birthday = reader[2].GetType() != typeof(DBNull)
                                 ? Convert.ToDateTime(reader[2])
                                 :new DateTime(),
+
                             Email = (reader[3].GetType() != typeof(DBNull)
                                 ? reader[3].ToString()
                                 : String.Empty),
 
-                            //cannot convert salary to double, throw exeption
                             Salary = (reader[4].GetType() != typeof(DBNull)
-                                ? reader[4]
-                                : String.Empty)
+                                ? reader[4].ToString().GetDouble()
+                                : 0.0)
                         };
                         dataFromDb.Add(item);
+                        Console.WriteLine(item);
                     }
                 }
             }  

@@ -32,6 +32,7 @@ namespace WF2
             if (ab.ShowDialog() == DialogResult.OK)
             {
                 var bike = ab.GetCreatedBike();
+                _bikes.Add(bike);
                 AddBikeToListView(bike);
 
                 _bikeId++;
@@ -42,7 +43,7 @@ namespace WF2
 
         private void AddBikeToListView(Bike bike)
         {
-            _bikes.Add(bike);
+            
 
             items = new ListViewItem(bike.Name);
             items.SubItems.Add(bike.Size.ToString());
@@ -81,50 +82,71 @@ namespace WF2
         private void openSavedToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFile = new OpenFileDialog();
-            openFile.Filter = "Text files|*.txt";
+            openFile.Filter = "Text files|*.txt|XML files|*.xml";
+            //openFile.Filter = "XML files|*.xml";
             openFile.Multiselect = false;
             openFile.InitialDirectory = Directory.GetCurrentDirectory();
-
+            
             if (openFile.ShowDialog() == DialogResult.OK)
             {
-                string fileText = File.ReadAllText(openFile.FileName);
-                List<string> stringBikes = fileText.Split(Environment.NewLine.ToCharArray(),
-                    StringSplitOptions.RemoveEmptyEntries).ToList();
-                _bikes.Clear();
-
-                foreach (var stringBike in stringBikes)
+                switch ((FileTypes)openFile.FilterIndex)
                 {
-                    var stringBikeType = stringBike.Split('♫').ToList()[4];
+                      case  FileTypes.Txt:
+                        OpenTxtBikes(openFile);
+                        break;
 
-                    BikeType type;
-                    Enum.TryParse(stringBikeType, true, out type);
-
-                    switch (type)
-                    {
-                        case BikeType.Cross:
-                            Cross bike;
-                            if(Cross.TryParse(stringBike, out bike))
-                            {
-                                AddBikeToListView(bike);
-                            }
-                            break;
-                        case BikeType.HardTeil:
-                            HardTeil hardTeil;
-                            if (HardTeil.TryParse(stringBike, out hardTeil))
-                            {
-                                AddBikeToListView(hardTeil);
-                            }
-                            break;
-                        case BikeType.Mountain:
-                            Mountain mountainBike;
-                            if (Mountain.TryParse(stringBike, out mountainBike))
-                            {
-                                AddBikeToListView(mountainBike);
-                            }
-                            break;
-                    }
+                      case FileTypes.Xml:
+                        DeSerializeFromFile(openFile.FileName);
+                        break;
                 }
-            } 
+                
+            }
+        }
+
+        private void OpenTxtBikes(OpenFileDialog openFile)
+        {
+            string fileText = File.ReadAllText(openFile.FileName);
+            List<string> stringBikes = fileText.Split(Environment.NewLine.ToCharArray(),
+                StringSplitOptions.RemoveEmptyEntries).ToList();
+
+            
+            _bikes.Clear();
+
+            foreach (var stringBike in stringBikes)
+            {
+                var stringBikeType = stringBike.Split('♫').ToList()[4];
+
+                BikeType type;
+                Enum.TryParse(stringBikeType, true, out type);
+
+                switch (type)
+                {
+                    case BikeType.Cross:
+                        Cross bike;
+                        if (Cross.TryParse(stringBike, out bike))
+                        {
+                            _bikes.Add(bike);
+                            AddBikeToListView(bike);
+                        }
+                        break;
+                    case BikeType.HardTeil:
+                        HardTeil hardTeil;
+                        if (HardTeil.TryParse(stringBike, out hardTeil))
+                        {
+                            _bikes.Add(hardTeil);
+                            AddBikeToListView(hardTeil);
+                        }
+                        break;
+                    case BikeType.Mountain:
+                        Mountain mountainBike;
+                        if (Mountain.TryParse(stringBike, out mountainBike))
+                        {
+                            _bikes.Add(mountainBike);
+                            AddBikeToListView(mountainBike);
+                        }
+                        break;
+                }
+            }
         }
 
         private void CoreForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -248,11 +270,16 @@ namespace WF2
         {
             if (File.Exists(filename))
             {
-                using (var stream = new FileStream((@"E:\study\ITA\ser.txt"), FileMode.OpenOrCreate))
+                using (var stream = new FileStream(filename, FileMode.OpenOrCreate))
                 {
                     var serializer = new XmlSerializer(typeof (List<Bike>),
                         new[] {typeof (Cross), typeof (HardTeil), typeof (Mountain)});
                     _bikes = (List<Bike>) serializer.Deserialize(stream);
+                }
+                
+                foreach (var bike in _bikes)
+                {
+                    AddBikeToListView(bike);
                 }
             }
         }

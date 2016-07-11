@@ -11,6 +11,7 @@ namespace Ado.Net
         static void Main(string[] args)
         {
             ReadFromBase();
+            Console.ReadKey();
         }
         
         private static void ReadFromBase()
